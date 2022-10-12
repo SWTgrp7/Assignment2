@@ -25,7 +25,7 @@ namespace Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        private ILogFile _logFile;
+        public ILogFile _logFile;
 
         // private string logFile = "logfile.txt"; // Navnet på systemets log-fil -> Moved to Logger class
 
@@ -36,19 +36,24 @@ namespace Ladeskab
             _display = new Display();
             _door = new Door();
             _rfidReader = new RFIDReader();
-            _logFile = new LogFile(logFile);
+            _logger = new Logger();
             
             _door.DoorEvent += HandleDoorEvent;
+            _rfidReader.RFIDEvent += HandleRFIDEvent;
         }
-        public StationControl(IChargeControl charger, IDisplay display, IDoor door, i)
+        
+        public StationControl(IChargeControl charger, IDisplay display, IDoor door, IRFIDReader RFIDReader,ILogger logger)
         {
             _charger = charger;
             _state = LadeskabState.Available;
             _display = display;
             _door = door;
-            _rfidReader = 
+            _rfidReader = RFIDReader;
+            _logger = logger;
             
             _door.DoorEvent += HandleDoorEvent;
+            _rfidReader.RFIDEvent += HandleRFIDEvent;
+            
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
@@ -115,7 +120,13 @@ namespace Ladeskab
             if (e.DoorOpen == false)
                 _display.LoadRFID();
         }
-        
+
+        private void HandleRFIDEvent(object sender, RFIDReaderEventArgs e)
+        {
+            RfidDetected(e.RFID);
+        }
+
+
     }
 }
     
