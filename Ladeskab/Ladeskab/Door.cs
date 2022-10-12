@@ -7,18 +7,27 @@ using Ladeskab.Interfaces;
 
 namespace Ladeskab
 {
-    internal class Door : IDoor
+    public class Door : IDoor
     {
         public event EventHandler<DoorEventArgs> DoorEvent;
+        private bool islocked { get; set; }
+        
+        public void OnDoorOpen(){
+            DoorEvent?.Invoke(this, new DoorEventArgs() { DoorOpen = true });
+        }
 
-        public void LockDoor()
+        public void OnDoorClose()
         {
             DoorEvent?.Invoke(this, new DoorEventArgs() { DoorOpen = false });
+        }
+        public void LockDoor()
+        {
+            islocked = true;
         }
 
         public void UnlockDoor()
         {
-            DoorEvent?.Invoke(this, new DoorEventArgs() { DoorOpen = true });
+            islocked = false;
         }
     }
 }

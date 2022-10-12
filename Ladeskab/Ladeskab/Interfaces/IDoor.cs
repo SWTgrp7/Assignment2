@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Ladeskab.Interfaces
 {
-    internal interface IDoor
+    public class DoorEventArgs : EventArgs
     {
+        public bool DoorOpen { get; set; }
+    }
+
+
+public interface IDoor
+    {
+        public event EventHandler<DoorEventArgs> DoorEvent;
+        public void LockDoor();
+        public void UnlockDoor();
     }
 }
