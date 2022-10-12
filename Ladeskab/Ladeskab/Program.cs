@@ -1,8 +1,14 @@
-﻿    class Program
+﻿using Ladeskab;
+using Ladeskab.Interfaces;
+
+class Program
     {
         static void Main(string[] args)
         {
-				// Assemble your system here from all the classes
+            IOpenDoor door = new Door();
+            IRFIDReader rfidReader = new RFIDReader();
+            StationControl SC = new StationControl();
+            
 
             bool finish = false;
             do
@@ -33,8 +39,11 @@
                         int id = Convert.ToInt32(idString);
                         rfidReader.OnRfidRead(id);
                         break;
+                    case 'P':
+                        SC._logger.PrintFile();
+                        break;
 
-                    default:
+                default:
                         break;
                 }
 
