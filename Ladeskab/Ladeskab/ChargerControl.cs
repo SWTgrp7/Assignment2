@@ -18,7 +18,7 @@ namespace Ladeskab
         {
             _display = new Display();
             _USBcharger = new UsbChargerSimulator();
-            _USBcharger.CurrentValueEvent += HandleCurrenValueChanged;
+            _USBcharger.CurrentValueEvent += HandleCurrentValueChanged;
         }
         public ChargerControl(IDisplay display, IUsbCharger USBcharger)
         {
@@ -43,7 +43,7 @@ namespace Ladeskab
             _USBcharger.StopCharge();
         }
 
-        private void HandleCurrenValueChanged(object  sender, CurrentEventArgs e)
+        private void HandleCurrentValueChanged(object  sender, CurrentEventArgs e)
         {
             CurrentNow = e.Current;
             
