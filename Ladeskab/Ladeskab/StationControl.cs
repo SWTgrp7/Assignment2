@@ -25,7 +25,7 @@ namespace Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        public ILogger _logFile;
+        public ILogger _logger;
 
         // private string logFile = "logfile.txt"; // Navnet på systemets log-fil -> Moved to Logger class
 
@@ -68,12 +68,7 @@ namespace Ladeskab
                         _door.LockDoor();
                         _charger.StartCharge();
                         _oldId = id;
-                        /*using (var writer = file.appendtext(logfile))
-                        {
-                            writer.writeline(datetime.now + ": skab låst med rfid: {0}", id);
-                        }*/
-
-
+                        _logger.LogDoorLocked(_oldId);
 
                         Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
@@ -95,10 +90,7 @@ namespace Ladeskab
                     {
                         _charger.StopCharge();
                         _door.UnlockDoor();
-                        /*using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-                        }*/
+                        _logger.LogDoorUnlocked(_oldId);
 
                         Console.WriteLine("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
@@ -114,11 +106,19 @@ namespace Ladeskab
         private void HandleDoorEvent(object sender, DoorEventArgs e)
         {
             if (e.DoorOpen == true)
+            {
+                _state = LadeskabState.DoorOpen;
                 _display.ConnectPhone();
+            }
+                
 
 
             if (e.DoorOpen == false)
-                _display.LoadRFID();
+            {
+                _state = LadeskabState.Available;
+                _display.LoadRFID();                
+            }
+                
         }
 
         private void HandleRFIDEvent(object sender, RFIDReaderEventArgs e)
