@@ -1,6 +1,6 @@
 namespace Ladeskab.Test.Unit
 {
-    public class Tests
+    public class TestsChargerControl
     {
         [SetUp]
         public void Setup()

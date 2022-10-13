@@ -40,9 +40,7 @@ class Program
                         int id = Convert.ToInt32(idString);
                         rfidReader.OnRfidRead(id);
                         break;
-                    case 'P':
-                        //SC._logger.PrintFile();
-                        break;
+                    
 
                 default:
                         break;
