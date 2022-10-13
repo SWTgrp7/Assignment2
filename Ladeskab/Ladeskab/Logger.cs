@@ -11,7 +11,7 @@ public class Logger	: ILogger
 
         public Logger()
         {
-            writer = new StreamWriter(logFile);
+            //writer = new StreamWriter(logFile);
         }
 
         public void LogDoorLocked(int id)

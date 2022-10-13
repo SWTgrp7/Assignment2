@@ -41,7 +41,7 @@ class Program
                         rfidReader.OnRfidRead(id);
                         break;
                     case 'P':
-                        SC._logger.PrintFile();
+                        //SC._logger.PrintFile();
                         break;
 
                 default:
