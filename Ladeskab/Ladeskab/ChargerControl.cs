@@ -12,13 +12,13 @@ namespace Ladeskab
     {
         IDisplay _display;
         IUsbCharger _USBcharger;
-        private double CurrentNow { get;  set; };
+        private double CurrentNow { get;  set; }
 
         public ChargerControl()
         {
             _display = new Display();
             _USBcharger = new UsbChargerSimulator();
-            _USBcharger.CurrentValueEvent += HandleCurrenValueChanged;
+            _USBcharger.CurrentValueEvent += HandleCurrentValueChanged;
         }
         public ChargerControl(IDisplay display, IUsbCharger USBcharger)
         {
@@ -43,7 +43,7 @@ namespace Ladeskab
             _USBcharger.StopCharge();
         }
 
-        private void HandleCurrenValueChanged(object  sender, CurrentEventArgs e)
+        private void HandleCurrentValueChanged(object  sender, CurrentEventArgs e)
         {
             CurrentNow = e.Current;
             
