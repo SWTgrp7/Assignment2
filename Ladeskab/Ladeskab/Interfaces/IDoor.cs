@@ -11,15 +11,13 @@ namespace Ladeskab.Interfaces
         public bool DoorOpen { get; set; }
     }
 
-    public interface IOpenDoor
-    {
-        public void OnDoorOpen();
-        public void OnDoorClose();
-    }
+   
     public interface IDoor
     {
         public event EventHandler<DoorEventArgs> DoorEvent;
         public void LockDoor();
         public void UnlockDoor();
+        public void OnDoorOpen();
+        public void OnDoorClose();
     }
 }

@@ -12,6 +12,7 @@ namespace Ladeskab
     {
         IDisplay _display;
         IUsbCharger _USBcharger;
+        private bool _charging { get; set; }
         private double CurrentNow { get;  set; }
 
         public ChargerControl()
@@ -48,16 +49,21 @@ namespace Ladeskab
             CurrentNow = e.Current;
             
             //ingen tilslutning
-            if(CurrentNow == 0.0) { _display.ConnectPhone(); }
+            if (CurrentNow == 0.0) { if(_charging == false) _display.ConnectPhone(); _charging = false; }
 
             //tilsluttet færdig
-            else if(CurrentNow<=5 && CurrentNow > 0) { _display.ChargeComplete(); }
-
+            else if(CurrentNow<=5 && CurrentNow > 0) { _display.ChargeComplete(); _charging = false; }
+            
             //opladning igang
-            else if(CurrentNow <= 500 && CurrentNow > 5) { _display.Charging(); }
+            else if(CurrentNow <= 500 && CurrentNow > 5) {
+                if(_charging==false)
+                    _display.Charging();
+                _charging = true;
+            }
 
             //FAIL
-            else  { _display.DisconnectPhone();
+            else  { 
+                _display.DisconnectPhone();
                 StopCharge();
             }
 

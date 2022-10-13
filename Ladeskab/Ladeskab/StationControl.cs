@@ -41,7 +41,21 @@ namespace Ladeskab
             _door.DoorEvent += HandleDoorEvent;
             _rfidReader.RFIDEvent += HandleRFIDEvent;
         }
-        
+
+        public StationControl(IDoor door, IRFIDReader RFIDReader)
+        {
+            _charger = new ChargerControl();
+            _state = LadeskabState.Available;
+            _display = new Display();
+            _door = door;
+            _rfidReader = RFIDReader;
+            _logger = new Logger();
+
+            _door.DoorEvent += HandleDoorEvent;
+            _rfidReader.RFIDEvent += HandleRFIDEvent;
+        }
+
+
         public StationControl(IChargeControl charger, IDisplay display, IDoor door, IRFIDReader RFIDReader,ILogger logger)
         { 
             _charger = charger;

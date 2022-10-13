@@ -5,9 +5,10 @@ class Program
     {
         static void Main(string[] args)
         {
-            IOpenDoor door = new Door();
+            
+            IDoor door = new Door();
             IRFIDReader rfidReader = new RFIDReader();
-            StationControl SC = new StationControl();
+            StationControl SC = new StationControl(door,rfidReader);
             
 
             bool finish = false;

@@ -7,7 +7,7 @@ using Ladeskab.Interfaces;
 
 namespace Ladeskab
 {
-    public class Door : IDoor, IOpenDoor
+    public class Door : IDoor
     {
         public event EventHandler<DoorEventArgs> DoorEvent;
         private bool islocked { get; set; }

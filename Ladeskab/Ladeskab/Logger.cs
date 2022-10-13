@@ -12,7 +12,7 @@ public class Logger	: ILogger
         public Logger()
         {
             writer = new StreamWriter(logFile);
-            reader = new StreamReader(logFile);
+           // reader = new StreamReader(logFile);
         }
 
         public void LogDoorLocked(int id)
