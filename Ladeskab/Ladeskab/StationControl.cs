@@ -25,7 +25,7 @@ namespace Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        public ILogFile _logFile;
+        public ILogger _logFile;
 
         // private string logFile = "logfile.txt"; // Navnet på systemets log-fil -> Moved to Logger class
 
@@ -43,7 +43,7 @@ namespace Ladeskab
         }
         
         public StationControl(IChargeControl charger, IDisplay display, IDoor door, IRFIDReader RFIDReader,ILogger logger)
-        {
+        { 
             _charger = charger;
             _state = LadeskabState.Available;
             _display = display;

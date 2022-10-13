@@ -2,7 +2,7 @@
 using System.IO;
 using Ladeskab.Interfaces;
 
-public class Logger	: Ilogger
+public class Logger	: ILogger
 {
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
