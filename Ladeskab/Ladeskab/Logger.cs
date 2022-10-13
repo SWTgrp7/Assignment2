@@ -7,12 +7,11 @@ public class Logger	: ILogger
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
         private StreamWriter writer;
-        private StreamReader reader;
+        
 
         public Logger()
         {
             writer = new StreamWriter(logFile);
-           // reader = new StreamReader(logFile);
         }
 
         public void LogDoorLocked(int id)
@@ -30,10 +29,6 @@ public class Logger	: ILogger
                 writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
             }
         }
-
-    public void PrintFile()
-        { }
-
-    
+        
 }
 
