@@ -25,7 +25,7 @@ namespace Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        public ILogger _logFile;
+        public ILogger _logger;
 
         // private string logFile = "logfile.txt"; // Navnet på systemets log-fil -> Moved to Logger class
 
