@@ -4,8 +4,6 @@ using Ladeskab.Interfaces;
 
 public class Logger	: Ilogger
 {
-	public Logger()
-	{
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
         private StreamWriter writer;
@@ -14,6 +12,7 @@ public class Logger	: Ilogger
         public Logger()
         {
             writer = new StreamWriter(logFile);
+            reader = new StreamReader(logFile);
         }
 
         public void LogDoorLocked(int id)
@@ -32,7 +31,9 @@ public class Logger	: Ilogger
             }
         }
 
-    public void PrintFile();
+    public void PrintFile()
+        { }
 
-    }
+    
 }
+

@@ -12,7 +12,7 @@ namespace Ladeskab
     {
         IDisplay _display;
         IUsbCharger _USBcharger;
-        private double CurrentNow { get;  set; };
+        private double CurrentNow { get;  set; }
 
         public ChargerControl()
         {
