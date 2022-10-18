@@ -12,8 +12,8 @@ namespace Ladeskab
     {
         IDisplay _display;
         IUsbCharger _USBcharger;
-        private bool _charging { get; set; }
-        private double CurrentNow { get;  set; }
+        public bool _charging { get; private set; }
+        public double CurrentNow { get;  private set; }
 
         public ChargerControl()
         {
@@ -25,6 +25,7 @@ namespace Ladeskab
         {
             _display = display;
             _USBcharger = USBcharger;
+            _USBcharger.CurrentValueEvent += HandleCurrentValueChanged;
         }
         
         public bool Connected {
