@@ -8,6 +8,7 @@ namespace Ladeskab.Test.Unit
         private ChargerControl _uut;
         private IDisplay _display;
         private IUsbCharger _usbCharger;
+        private ChargerControl _testor;
        
 
         [SetUp]
@@ -16,6 +17,7 @@ namespace Ladeskab.Test.Unit
             _display = Substitute.For<IDisplay>();
             _usbCharger = Substitute.For<IUsbCharger>();
             _uut = new ChargerControl(_display, _usbCharger);
+            _testor = new ChargerControl();
            
         }
 

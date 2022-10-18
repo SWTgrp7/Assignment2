@@ -17,9 +17,11 @@ namespace Ladeskab
 
         public ChargerControl()
         {
+            Connected = false;
             _display = new Display();
             _USBcharger = new UsbChargerSimulator();
             _USBcharger.CurrentValueEvent += HandleCurrentValueChanged;
+            
         }
         public ChargerControl(IDisplay display, IUsbCharger USBcharger)
         {
@@ -28,11 +30,8 @@ namespace Ladeskab
             _USBcharger.CurrentValueEvent += HandleCurrentValueChanged;
         }
         
-        public bool Connected {
-            
-            get { return _USBcharger.Connected; }
-            
-            private set { } 
+        public bool Connected {           
+            get { return _USBcharger.Connected; } private set { } 
         }
         
         public void StartCharge()
