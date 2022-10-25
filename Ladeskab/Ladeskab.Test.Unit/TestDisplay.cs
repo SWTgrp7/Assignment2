@@ -23,35 +23,35 @@ namespace Ladeskab.Test.Unit
         public void Test_ConnectPhone()
         {
             uut.ConnectPhone();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.connectphone));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.connectphone + "\r\n"));
         }
 
         [Test]
         public void Test_DisconnectPhone()
         {
             uut.DisconnectPhone();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.disconnectphone));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.disconnectphone + "\r\n"));
         }
 
         [Test]
         public void Test_ConnectionError()
         {
             uut.ConnectionError();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.connectionerror));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.connectionerror + "\r\n"));
         }
 
         [Test]
         public void Test_ChargeComplete()
         {
             uut.ChargeComplete();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.chargecomplete));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.chargecomplete + "\r\n"));
         }
 
         [Test]
         public void Test_Charging()
         {
             uut.Charging();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.charging));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.charging + "\r\n"));
         }
 
         [TestCase(100)]
@@ -68,42 +68,42 @@ namespace Ladeskab.Test.Unit
         public void Test_RFIDError()
         {
             uut.RFIDError();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.RFIDerror));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.RFIDerror + "\r\n"));
         }
 
         [Test]
         public void Test_LoadRFID()
         {
             uut.LoadRFID();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.scanRFID));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.scanRFID + "\r\n"));
         }
 
         [Test]
         public void Test_Occupied()
         {
             uut.Occuppied();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.occupied));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.occupied + "\r\n"));
         }
 
         [Test]
         public void Test_DoorLocked()
         {
             uut.DoorLocked();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.doorlocked));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.doorlocked + "\r\n"));
         }
 
         [Test]
         public void Test_RemovePhone()
         {
             uut.RemovePhone();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.removephone));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.removephone + "\r\n"));
         }
 
         [Test]
         public void Test_WrongRFID()
         {
             uut.WrongRFID();
-            Assert.That(sw.ToString(), Is.EqualTo(uut.wrongRFID));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.wrongRFID + "\r\n"));
         }
     }
 }

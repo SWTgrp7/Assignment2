@@ -9,18 +9,18 @@ namespace Ladeskab
 {
     public class Display : IDisplay
     {
-        public string connectphone = "Please Connect your phone\r\n";
-        public string disconnectphone = "Please Disconnect your phone\r\n";
-        public string connectionerror = "Connection Error - try connecting your phone again\r\n";
-        public string chargecomplete = "Charge Complete - disconnect your phone\r\n";
-        public string charging = "Charging\r\n";
+        public string connectphone = "Please Connect your phone";
+        public string disconnectphone = "Please Disconnect your phone";
+        public string connectionerror = "Connection Error - try connecting your phone again";
+        public string chargecomplete = "Charge Complete - disconnect your phone";
+        public string charging = "Charging";
         public string chargingcurrent = "Charging - Current: ";
-        public string RFIDerror = "RFID Error - try again\r\n";
-        public string scanRFID = "Please scan your RFID tag\r\n";
-        public string occupied = "Cabinet Occupied - try again later\r\n";
-        public string doorlocked = "The door is now locked and your phone is charging. Use your RFID to unlock the door\r\n";
-        public string removephone = "Please remove your phone and close the door\r\n";
-        public string wrongRFID = "Wrong RFID tag\r\n";
+        public string RFIDerror = "RFID Error - try again";
+        public string scanRFID = "Please scan your RFID tag";
+        public string occupied = "Cabinet Occupied - try again later";
+        public string doorlocked = "The door is now locked and your phone is charging. Use your RFID to unlock the door";
+        public string removephone = "Please remove your phone and close the door";
+        public string wrongRFID = "Wrong RFID tag";
 
         public void ConnectPhone()
         {
