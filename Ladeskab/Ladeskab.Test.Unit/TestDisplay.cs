@@ -61,7 +61,7 @@ namespace Ladeskab.Test.Unit
         public void Test_ChargingCurrent(double current)
         {
             uut.Charging(current);
-            Assert.That(sw.ToString(), Is.EqualTo(uut.chargingcurrent + current));
+            Assert.That(sw.ToString(), Is.EqualTo(uut.chargingcurrent + current + "\r\n"));
         }
 
         [Test]
@@ -83,6 +83,27 @@ namespace Ladeskab.Test.Unit
         {
             uut.Occuppied();
             Assert.That(sw.ToString(), Is.EqualTo(uut.occupied));
+        }
+
+        [Test]
+        public void Test_DoorLocked()
+        {
+            uut.DoorLocked();
+            Assert.That(sw.ToString(), Is.EqualTo(uut.doorlocked));
+        }
+
+        [Test]
+        public void Test_RemovePhone()
+        {
+            uut.RemovePhone();
+            Assert.That(sw.ToString(), Is.EqualTo(uut.removephone));
+        }
+
+        [Test]
+        public void Test_WrongRFID()
+        {
+            uut.WrongRFID();
+            Assert.That(sw.ToString(), Is.EqualTo(uut.wrongRFID));
         }
     }
 }
