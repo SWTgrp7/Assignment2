@@ -17,7 +17,12 @@ namespace Ladeskab.Interfaces
         public void RFIDError();
         public void LoadRFID();
         public void Occuppied();
-        
-        
+        public void DoorLocked();
+        public void RemovePhone();
+
+        public void WrongRFID();
+
+
+
     }
 }

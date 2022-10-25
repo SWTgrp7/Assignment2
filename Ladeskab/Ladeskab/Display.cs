@@ -59,9 +59,24 @@ namespace Ladeskab
             Console.WriteLine(scanRFID);
         }
 
+        public void DoorLocked()
+        {
+            Console.WriteLine("The door is now locked and your phone is charging. Use your RFID to unlock the door.");
+        }
+
         public void Occuppied()
         {
             Console.WriteLine(occupied);
+        }
+
+        public void RemovePhone()
+        {
+            Console.WriteLine("Please remove your phone and close the door.");
+        }
+
+        public void WrongRFID()
+        {
+            Console.WriteLine("Wrong RFID tag.");
         }
     }
 }
