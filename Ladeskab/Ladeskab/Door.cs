@@ -10,27 +10,29 @@ namespace Ladeskab
     public class Door : IDoor
     {
         public event EventHandler<DoorEventArgs> DoorEvent;
-        private bool islocked { get; set; }
-        private bool isDoorOpen { get; set; }
+        public bool IsLocked { get; private set; }
+        public bool IsDoorOpen { get; private set; }
         
-        public void OnDoorOpen(){
-            isDoorOpen = true;
+        public void OnDoorOpen()
+        {
+            IsDoorOpen = true;
             DoorEvent?.Invoke(this, new DoorEventArgs() { DoorOpen = true });
         }
 
         public void OnDoorClose()
         {
-            isDoorOpen = false;
+            IsDoorOpen = false;
             DoorEvent?.Invoke(this, new DoorEventArgs() { DoorOpen = false });
         }
+
         public void LockDoor()
         {
-            islocked = true;
+            IsLocked = true;
         }
 
         public void UnlockDoor()
         {
-            islocked = false;
+            IsLocked = false;
         }
     }
 }
