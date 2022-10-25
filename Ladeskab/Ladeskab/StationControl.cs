@@ -25,7 +25,12 @@ namespace Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
-        public ILogger _logger;
+        private ILogger _logger;
+
+
+        public int OldId { get { return _oldId; } set { } }
+
+
 
         // private string logFile = "logfile.txt"; // Navnet på systemets log-fil -> Moved to Logger class
 
@@ -83,13 +88,12 @@ namespace Ladeskab
                         _charger.StartCharge();
                         _oldId = id;
                         _logger.LogDoorLocked(_oldId);
-
-                        Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        _display.DoorLocked();
                         _state = LadeskabState.Locked;
                     }
                     else
                     {
-                        Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        _display.ConnectionError();
                     }
 
                     break;
@@ -105,34 +109,38 @@ namespace Ladeskab
                         _charger.StopCharge();
                         _door.UnlockDoor();
                         _logger.LogDoorUnlocked(_oldId);
+                        _display.RemovePhone();
 
-                        Console.WriteLine("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        _display.WrongRFID();
                     }
 
                     break;
             }
         }
-        private void HandleDoorEvent(object sender, DoorEventArgs e)
+
+        private void DoorDetected(bool doorOpen)
         {
-            if (e.DoorOpen == true)
+            if (doorOpen == true)
             {
                 _state = LadeskabState.DoorOpen;
                 _display.ConnectPhone();
             }
-                
 
 
-            if (e.DoorOpen == false)
+
+            if (doorOpen == false)
             {
                 _state = LadeskabState.Available;
-                _display.LoadRFID();                
+                _display.LoadRFID();
             }
-                
+        }
+        private void HandleDoorEvent(object sender, DoorEventArgs e)
+        {
+            DoorDetected(e.DoorOpen);                
         }
 
         private void HandleRFIDEvent(object sender, RFIDReaderEventArgs e)
