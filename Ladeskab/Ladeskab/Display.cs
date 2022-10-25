@@ -9,48 +9,59 @@ namespace Ladeskab
 {
     public class Display : IDisplay
     {
+        public string connectphone = "Please Connect your phone";
+        public string disconnectphone = "Please Disconnect your phone";
+        public string connectionerror = "Connection Error - try connecting your phone again";
+        public string chargecomplete = "Charge Complete - disconnect your phone";
+        public string charging = "Charging";
+        public string chargingcurrent = "Charging - Current: ";
+        public string RFIDerror = "RFID Error - try again";
+        public string scanRFID = "Please scan your RFID tag";
+        public string occupied = "Cabinet Occupied - try again later";
+
         public void ConnectPhone()
         {
-            Console.WriteLine("Please Connect your phone");
+            Console.WriteLine(connectphone);
         }
 
         public void DisconnectPhone()
         {
-            Console.WriteLine("Please Disconnect your phone NOW!!!");
+            Console.WriteLine(disconnectphone);
         }
 
         public void ConnectionError()
         {
-            Console.WriteLine("Connection Error - connect your phone");
+            Console.WriteLine(connectionerror);
         }
 
         public void ChargeComplete()
         {
-            Console.WriteLine("Charge Complete - extract your phone");
+            Console.WriteLine(chargecomplete);
         }
 
         public void Charging()
         {
-            Console.WriteLine("Charging");
+            Console.WriteLine(charging);
         }
+
         public void Charging(double current)
         {
-           Console.WriteLine("Charging - Current: " + current);
-            
+           Console.WriteLine(chargingcurrent + current);
         }
+
         public void RFIDError()
         {
-            Console.WriteLine("RFID Error - try again");
+            Console.WriteLine(RFIDerror);
         }
 
         public void LoadRFID()
         {
-            Console.WriteLine("add your RFID tag");
+            Console.WriteLine(scanRFID);
         }
 
         public void Occuppied()
         {
-            Console.WriteLine("Cappinet Occupied - try again later");
+            Console.WriteLine(occupied);
         }
     }
 }

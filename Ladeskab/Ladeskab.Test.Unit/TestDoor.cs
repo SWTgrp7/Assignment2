@@ -5,46 +5,46 @@ namespace Ladeskab.Test.Unit
 {
     public class TestDoor
     {
-        private Door _uut;
+        private Door uut;
 
         // SETUP
         [SetUp]
         public void Setup()
         {
-            _uut = new Door();
+            uut = new Door();
         }
 
         // TESTS
         [Test]
         public void Test_DoorIsLocked()
         {
-            _uut.LockDoor();
-            Assert.That(_uut.IsLocked, Is.True);
+            uut.LockDoor();
+            Assert.That(uut.IsLocked, Is.True);
         }
 
         [Test]
         public void Test_DoorIsUnlocked()
         {
-            _uut.UnlockDoor();
-            Assert.That(_uut.IsLocked, Is.False);
+            uut.UnlockDoor();
+            Assert.That(uut.IsLocked, Is.False);
         }
 
         [Test]
         public void Test_DoorIsOpened()
         {
-            _uut.OnDoorOpen();
-            Assert.That(_uut.IsDoorOpen, Is.True);
+            uut.OnDoorOpen();
+            Assert.That(uut.IsDoorOpen, Is.True);
 
             // Event arg test?
             //_uut.DoorEvent += Raise.Event();
-            //Assert.That(_uut., Is.);
+            //Assert.That(uut., Is.);
         }
 
         [Test]
         public void Test_DoorIsClosed()
         {
-            _uut.OnDoorClose();
-            Assert.That(_uut.IsDoorOpen, Is.False);
+            uut.OnDoorClose();
+            Assert.That(uut.IsDoorOpen, Is.False);
 
             // Event arg test?
         }
