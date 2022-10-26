@@ -13,7 +13,7 @@ namespace Ladeskab.Test.Unit
         public void Setup()
         {
             uut = new Logger();
-            reader = new StreamReader(logfile);
+            //reader = new StreamReader(logfile);
         }
 
         // TESTS
