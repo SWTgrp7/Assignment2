@@ -26,7 +26,6 @@ namespace Ladeskab.Test.Unit
             _fakeDoor = Substitute.For<IDoor>();
             _fakeIRFIDReader = Substitute.For<IRFIDReader>();
             _fakeLogger = Substitute.For<ILogger>();
-
             _uut = new StationControl(_fakeChargeControl, _fakeDisplay, _fakeDoor, _fakeIRFIDReader, _fakeLogger);
         }
 
@@ -278,8 +277,6 @@ namespace Ladeskab.Test.Unit
         }
 
         #endregion
-
-
 
     }
 }
