@@ -2,12 +2,13 @@
 using System.IO;
 using Ladeskab.Interfaces;
 
-public class Logger	: ILogger
+namespace Ladeskab
 {
+    public class Logger : ILogger
+    {
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
         private StreamWriter writer;
-        
 
         public Logger()
         {
@@ -16,19 +17,14 @@ public class Logger	: ILogger
 
         public void LogDoorLocked(int id)
         {
-            using (var writer = File.AppendText(logFile))
-            {
-                writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
-            }
+            using var writer = File.AppendText(logFile);
+            writer.WriteLine(DateTime.Now + $": Cabinet locked with RFID: {id}");
         }
 
         public void LogDoorUnlocked(int id)
         {
-            using (var writer = File.AppendText(logFile))
-            {
-                writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-            }
+            using var writer = File.AppendText(logFile);
+            writer.WriteLine(DateTime.Now + $": Cabinet unlocked with RFID: {id}");
         }
-        
+    }
 }
-

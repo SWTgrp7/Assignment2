@@ -6,12 +6,17 @@ namespace Ladeskab.Test.Unit
     public class TestDoor
     {
         private Door uut;
+        private DoorEventArgs receivedDoorEvent;
 
         // SETUP
         [SetUp]
         public void Setup()
         {
             uut = new Door();
+            receivedDoorEvent = null;
+
+            uut.DoorEvent += (o, args)
+                => receivedDoorEvent = args;
         }
 
         // TESTS
@@ -34,10 +39,20 @@ namespace Ladeskab.Test.Unit
         {
             uut.OnDoorOpen();
             Assert.That(uut.IsDoorOpen, Is.True);
+        }
 
-            // Event arg test?
-            //_uut.DoorEvent += Raise.Event();
-            //Assert.That(uut., Is.);
+        [Test]
+        public void Test_DoorOpenedEvent()
+        {
+            uut.OnDoorOpen();
+            Assert.That(receivedDoorEvent, Is.Not.Null);
+        }
+
+        [Test]
+        public void Test_DoorOpenedEventPropertyIsTrue()
+        {
+            uut.OnDoorOpen();
+            Assert.That(receivedDoorEvent.DoorOpen, Is.True);
         }
 
         [Test]
@@ -45,8 +60,20 @@ namespace Ladeskab.Test.Unit
         {
             uut.OnDoorClose();
             Assert.That(uut.IsDoorOpen, Is.False);
+        }
 
-            // Event arg test?
+        [Test]
+        public void Test_DoorClosedEvent()
+        {
+            uut.OnDoorClose();
+            Assert.That(receivedDoorEvent, Is.Not.Null);
+        }
+
+        [Test]
+        public void Test_DoorClosedEventPropertyIsTrue()
+        {
+            uut.OnDoorClose();
+            Assert.That(receivedDoorEvent.DoorOpen, Is.False);
         }
     }
 }
