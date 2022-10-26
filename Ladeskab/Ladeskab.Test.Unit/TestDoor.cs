@@ -70,7 +70,7 @@ namespace Ladeskab.Test.Unit
         }
 
         [Test]
-        public void Test_DoorClosedEventPropertyIsTrue()
+        public void Test_DoorClosedEventPropertyIsFalse()
         {
             uut.OnDoorClose();
             Assert.That(receivedDoorEvent.DoorOpen, Is.False);
