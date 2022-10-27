@@ -28,12 +28,9 @@ namespace Ladeskab
         private ILogger _logger;
 
 
-        public int OldId { get { return _oldId; } set { } }
-
-        private LadeskabState State { get => _state; set => _state = value; }
+        public int OldId { get { return _oldId; } private set => _oldId = value; }
         public IChargeControl Charger { get => _charger; private set => _charger = value; }
         public IDisplay Display { get => _display; private set => _display = value; }
-        public int OldId1 { get => _oldId; private set => _oldId = value; }
         public IDoor Door { get => _door; private set => _door = value; }
         public IRFIDReader RfidReader { get => _rfidReader; private set => _rfidReader = value; }
         public ILogger Logger { get => _logger; private set => _logger = value; }
